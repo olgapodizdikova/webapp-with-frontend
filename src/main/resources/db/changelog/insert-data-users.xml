@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd"
+        logicalFilePath="3.6.x/060_add_column_to_close_complex_attachments.xml">
+    <changeSet id="4" author="Olga">
+        <insert tableName="users">
+            <column name="users_id" value="1"></column>
+            <column name="login" value="admin11">
+            </column>
+            <column name="password" value="12345">
+            </column>
+            <column name="email" value="mail@mail.ru">
+            </column>
+            <column name="name" value="olga">
+            </column>
+            <column name="age" value="24">
+            </column>
+            <column name="salary" value="2000">
+            </column>
+        </insert>
+
+        <insert tableName="users">
+            <column name="users_id" value="2"></column>
+            <column name="login" value="admin112">
+            </column>
+            <column name="password" value="12345">
+            </column>
+            <column name="email" value="mail@mail.ru">
+            </column>
+            <column name="name" value="olga">
+            </column>
+            <column name="age" value="24">
+            </column>
+            <column name="salary" value="2000">
+            </column>
+        </insert>
+
+        <insert tableName="users">
+            <column name="users_id" value="3"></column>
+            <column name="login" value="admin113">
+            </column>
+            <column name="password" value="12345">
+            </column>
+            <column name="email" value="mail@mail.ru">
+            </column>
+            <column name="name" value="olga">
+            </column>
+            <column name="age" value="24">
+            </column>
+            <column name="salary" value="2000">
+            </column>
+        </insert>
+
+        <insert tableName="users">
+            <column name="users_id" value="4"></column>
+            <column name="login" value="admin114">
+            </column>
+            <column name="password" value="12345">
+            </column>
+            <column name="email" value="mail@mail.ru">
+            </column>
+            <column name="name" value="olga">
+            </column>
+            <column name="age" value="24">
+            </column>
+            <column name="salary" value="2000">
+            </column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

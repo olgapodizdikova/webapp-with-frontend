@@ -1,0 +1,170 @@
+<div class="ui-g-12">
+  <app-user-menu></app-user-menu>
+</div>
+<div class="ui-g-12">
+  <div class="ui-g-2"></div>
+  <div class="ui-g-7">
+    <p-growl [value]="msgs"></p-growl>
+    <p-panel header="User">
+      <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+        <div class="ui-grid-col-12">
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submittedAdd">
+            <i class="fa fa-close"></i>
+            {{errorAddUser}}
+          </div>
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submittedEdit">
+            <i class="fa fa-close"></i>
+            {{errorEditUser}}
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Login*:
+          </div>
+          <div class="ui-grid-col-4">
+            <input pInputText id="login" autocomplete="new-password" name="login" [(ngModel)]="user.login"
+                   class="form-control" required pattern="[\S]{0,}" #login="ngModel"/>
+          </div>
+          <div class="ui-grid-col-6">
+            <div *ngIf="login.invalid && (login.dirty || login.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="login.errors.required" class="ui-messages-error">
+                Login is required.
+              </div>
+              <div *ngIf="login.errors.pattern" class="ui-messages-error">
+                Login is not blanc.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Password*:
+          </div>
+          <div class="ui-grid-col-4">
+            <input pInputText type="password" autocomplete="new-password" [(ngModel)]="user.password" id="password"
+                   name="password" class="form-control" required pattern="[\S]{0,}" #password="ngModel"/>
+          </div>
+          <div class="ui-grid-col-6">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="password.errors.required" class="ui-messages-error">
+                Password is required.
+              </div>
+              <div *ngIf="login.errors.pattern" class="ui-messages-error">
+                Password is not blanc.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            E-mail*:
+          </div>
+          <div class="ui-grid-col-4">
+            <input pInputText id="email" name="email" [(ngModel)]="user.email"
+                   #email="ngModel" required email/>
+          </div>
+          <div class="ui-grid-col-6">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="password.errors.required" class="ui-messages-error">
+                E-mail is required.
+              </div>
+              <div *ngIf="password.errors.email" class="ui-messages-error">
+                E-mail is incorrect.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Name*:
+          </div>
+          <div class="ui-grid-col-4">
+            <input pInputText id="name" name="name" [(ngModel)]="user.name"
+                   required pattern="[\S]{0,}" #name="ngModel"/>
+          </div>
+          <div class="ui-grid-col-6">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="name.errors.required" class="ui-messages-error">
+                Name is required.
+              </div>
+              <div *ngIf="name.errors.pattern" class="ui-messages-error">
+                Name is not blanc.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Date Bday*:
+          </div>
+          <div class="ui-grid-col-4">
+            <p-calendar [(ngModel)] ="user.datedday" dateFormat="dd.mm.yy"
+                        [monthNavigator]="true" [yearNavigator]="true" yearRange="1950:2001"></p-calendar>
+          </div>
+          <div class="ui-grid-col-6">
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Age*:
+          </div>
+          <div class="ui-grid-col-4">
+            <input pInputText pKeyFilter="num" id="age" name="age" [(ngModel)]="user.age"
+                   #age="ngModel" required min="18" max="100"/>
+          </div>
+          <div class="ui-grid-col-6">
+            <div *ngIf="age.invalid && (age.dirty || age.touched)"
+                 class="alert alert-danger ui-messages-error">
+              Age is incorrect.
+            </div>
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Salary*:
+          </div>
+          <div class="ui-grid-col-4">
+            <input pInputText pKeyFilter="num" id="salary" name="salary" [(ngModel)]="user.salary"
+                   #salary="ngModel" required min="500" max="10000"/>
+          </div>
+          <div class="ui-grid-col-6">
+            <div *ngIf="salary.invalid && (salary.dirty || salary.touched)"
+                 class="alert alert-danger ui-messages-error">
+              Salary is incorrect.
+            </div>
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2">
+            Role:
+          </div>
+          <div class="ui-grid-col-6">
+            <div *ngFor="let role of roles">
+              <p-checkbox [value]="role.role" [label]="role.role"
+                          [(ngModel)]="selectedRoles" name="roles">
+              </p-checkbox>
+            </div>
+          </div>
+          <div class="ui-grid-col-4">
+          </div>
+        </div>
+        <div class="ui-grid-row">
+          <div class="ui-grid-col-2"></div>
+          <div class="ui-grid-col-6">
+            <p-confirmDialog></p-confirmDialog>
+            <button pButton type="button" icon="fa-check" (click)="confirm()" label="Save"
+                    [disabled]="name.invalid || email.invalid || login.invalid || age.invalid
+                     || salary.invalid || password.invalid"></button>
+            <button pButton type="button" icon="fa-close" (click)="cancel()" label="Cancel"></button>
+          </div>
+          <div class="ui-grid-col-4"></div>
+        </div>
+      </div>
+    </p-panel>
+  </div>
+  <div class="ui-g-3"></div>
+</div>

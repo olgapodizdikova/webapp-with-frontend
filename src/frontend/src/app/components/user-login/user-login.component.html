@@ -1,0 +1,48 @@
+<div class="ui-g-12">
+  <div class="login-form">
+    <p-card [style]="{width: '450px'}" styleClass="ui-card-shadow">
+      <h1>Login Form</h1>
+      <table>
+        <tr>
+          <td colspan=2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            LOGIN:
+          </td>
+          <td>
+            <input pInputText id="username" name="username" [(ngModel)]="username"/>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            PASSWORD:
+          </td>
+          <td>
+            <input pInputText type="password"
+                   id="password" name="password" [(ngModel)]="password"/>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=2>
+            <div class="ui-message ui-messages-error ui-corner-all" *ngIf="submitted">
+              <i class="fa fa-close"></i>
+              {{errorLogin}}
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=2>
+          </td>
+        </tr>
+      </table>
+      <p-footer>
+        <p-button icon="fa fa-fw fa-check" iconPos="right" label=" Log In" (click)="login()">
+        </p-button>
+      </p-footer>
+    </p-card>
+  </div>
+</div>

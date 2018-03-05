@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myData
+    username: postgres
+    password: 12345
+  jpa:
+    properties:
+       hibernate.dialect: org.hibernate.dialect.PostgreSQL94Dialect
+    hibernate:
+      connection:
+                charset: utf8
+                useUnicode: true
+      ddl-auto: none
+    show-sql: true
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.ISO8601DateFormat
+
+security:
+  basic:
+    enabled: false
+
+liquibase:
+  change-log: classpath:db/liquibase-changelog.xml
+
+

@@ -1,0 +1,40 @@
+<div class="ui-g-12">
+  <app-user-menu></app-user-menu>
+</div>
+<div class="ui-g-11">
+  <p-dataTable [value]="users" selectionMode="single"
+               [(selection)]="selectedUser" [metaKeySelection]="false"
+               [responsive]="true" [rows]="10" [paginator]="true">
+    <p-header>
+      Список пользователей
+    </p-header>
+    <p-column header="ФИО" field="name" [filter]="true" filterPlaceholder="Поиск">
+      <ng-template let-col let-user="rowData" pTemplate="body">
+        <span>{{user.name}}<br></span>
+      </ng-template>
+    </p-column>
+    <p-column *ngFor="let user of tables" [field]="user.field" [header]="user.header">
+    </p-column>
+    <p-column header="Дата рождения">
+      <ng-template let-col let-user="rowData" pTemplate="body">
+        <span>{{user.datedday | date: 'dd.MM.yyyy'}}<br></span>
+      </ng-template>
+    </p-column>
+    <p-column header="Роли">
+      <ng-template let-col let-user="rowData" pTemplate="body">
+        <span *ngFor="let role of user.roles">{{role.role}}<br></span>
+      </ng-template>
+    </p-column>
+    <p-footer>
+      <div class="ui-helper-clearfix" style="width:100%">
+        <div class="list-user-button">
+          <button type="button" pButton icon="fa-edit" (click)="edit()"
+                  label="Редактировать" class="ui-button-info"></button>
+          <button type="button" pButton icon="fa-close" (click)="delete()"
+                  label="Удалить" class="ui-button-danger"></button>
+        </div>
+      </div>
+    </p-footer>
+  </p-dataTable>
+</div>
+<div class="ui-g-1"></div>
